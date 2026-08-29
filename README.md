@@ -9,16 +9,37 @@ the complete requirements.
 Tailwind CSS, deployed on Vercel. Chosen to stay on free tiers — see
 "Recommended Approach" in the engineering system prompt.
 
-## Phase 0 status: foundation
+## Phase 1 status: admin menu management
 
 This repo currently contains:
 - Project scaffold (Next.js + Tailwind wired up)
 - Full database schema (`supabase/schema.sql`) — menu, orders,
   delivery zones, settings, with Row Level Security policies
 - A placeholder homepage that confirms the Supabase connection works
+- **Admin login** (`/admin/login`) — single-owner, no public sign-up
+- **Admin menu management** (`/admin/menu`, `/admin/categories`) —
+  add/edit/delete categories; add/edit/hide/delete menu items with
+  multiple sizes, optional add-ons (e.g. flavors), photo upload, and
+  the handwritten-message-eligible flag; reorder everything with the
+  ▲▼ buttons
 
-Nothing customer-facing is built yet — that starts in Phase 1 (admin
-menu management) and Phase 2 (public menu/order page).
+Nothing customer-facing is built yet — that's Phase 2 (public
+menu/order page), which will read from the same tables this admin
+section writes to.
+
+### One-time admin setup (after running schema.sql)
+
+1. In the Supabase SQL Editor, run `supabase/phase1_admin_setup.sql`
+2. In **Authentication → Providers → Email**, turn OFF "Allow new
+   users to sign up"
+3. In **Authentication → Users**, click **Add user** and create the
+   owner's login (email + password) — this is the only account that
+   will ever exist
+4. In **Storage**, create a new bucket named exactly `menu-photos` and
+   toggle **Public bucket** ON
+
+Then visit `/admin/login`, sign in with the account from step 3, and
+you can start building the real menu.
 
 ## Getting set up locally
 
