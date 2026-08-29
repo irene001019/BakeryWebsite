@@ -31,6 +31,9 @@ export default async function Home() {
             {settings.order_cutoff_day} at {settings.order_cutoff_time}.
           </p>
         )}
+        <a href="/menu" className="inline-block text-sm underline text-brand-crust">
+          View the menu →
+        </a>
       </div>
     </main>
   );

@@ -26,7 +26,7 @@ export default function AdminNav({ active }) {
             href={l.href}
             className={
               active === l.href
-                ? "text-brand-accent"
+                ? "text-brand-crust"
                 : "text-brand-crust/70 hover:text-brand-crust"
             }
           >
