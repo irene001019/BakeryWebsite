@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "[Bakery Name]",
+  title: "JiaPan Bakery",
   description: "Fresh-baked cheesecakes and buns, handmade every weekend.",
 };
 

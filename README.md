@@ -1,4 +1,4 @@
-# [Bakery Name] Website
+# JiaPan Bakery Website
 
 Pre-order website for a local bakery: public menu + pickup/delivery
 pre-order form + a basic admin dashboard for the owner. See the full
