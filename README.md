@@ -1,4 +1,4 @@
-# [Bakery Name] Website
+# JiaPan Bakery Website
 
 Pre-order website for a local bakery: public menu + pickup/delivery
 pre-order form + a basic admin dashboard for the owner. See the full
@@ -8,6 +8,31 @@ the complete requirements.
 **Stack:** Next.js (App Router) + Supabase (Postgres + Auth + Storage) +
 Tailwind CSS, deployed on Vercel. Chosen to stay on free tiers — see
 "Recommended Approach" in the engineering system prompt.
+
+## Phase 2 status: public menu/order page (core)
+
+This repo currently contains everything from Phase 0 and 1, plus:
+- **Public menu page** (`/menu`) — reads live from the database (only
+  non-hidden items), grouped by category, with size and flavor
+  selection, quantity steppers, and the handwritten-message inline
+  option for eligible items (free, no price change)
+- **Live cart** — a sticky order summary with running subtotal,
+  editable quantities, and remove buttons (cart state lives in the
+  browser tab only for now; it gets written to the database for real
+  in Phase 5)
+- **Real brand design** — colors and type were pulled directly from
+  the actual JiaPan Bakery logo (`public/logo-reference.jpg`), not
+  placeholder values: warm ivory background, deep espresso ink, soft
+  latte-tan accent, a refined serif for headings, and a flowing script
+  used sparingly for the site's own wordmark, echoing the logo's
+  hand-lettering
+
+**Not yet built:** pickup/delivery selection, the Friday-cutoff status
+banner, and checkout/submission — those are Phases 3–5. The `/menu`
+page currently ends at "here's your subtotal," by design.
+
+To see it: add a category and a couple of items from `/admin/menu`
+(Phase 1), then visit `/menu`.
 
 ## Phase 1 status: admin menu management
 

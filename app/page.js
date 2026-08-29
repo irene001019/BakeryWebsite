@@ -13,7 +13,7 @@ export default async function Home() {
     <main className="min-h-screen flex items-center justify-center p-8">
       <div className="max-w-md text-center space-y-4">
         <h1 className="font-display text-3xl text-brand-crust">
-          [Bakery Name] — Foundation Check
+          JiaPan Bakery — Foundation Check
         </h1>
         <p>
           This placeholder page confirms the project is wired up correctly.
@@ -31,6 +31,9 @@ export default async function Home() {
             {settings.order_cutoff_day} at {settings.order_cutoff_time}.
           </p>
         )}
+        <a href="/menu" className="inline-block text-sm underline text-brand-crust">
+          View the menu →
+        </a>
       </div>
     </main>
   );

@@ -90,7 +90,7 @@ function CategoriesPageInner() {
                 <input
                   defaultValue={c.name}
                   onBlur={(e) => e.target.value !== c.name && handleRename(c.id, e.target.value)}
-                  className="flex-1 border border-transparent hover:border-brand-crust/20 focus:border-brand-accent rounded px-2 py-1"
+                  className="flex-1 border border-transparent hover:border-brand-crust/20 focus:border-brand-crust rounded px-2 py-1"
                 />
                 <button onClick={() => handleDelete(c.id)} className="text-red-500 text-sm">Delete</button>
               </li>
@@ -104,7 +104,7 @@ function CategoriesPageInner() {
             placeholder="New category name"
             className="flex-1 border border-brand-crust/20 rounded-lg px-3 py-2"
           />
-          <button type="submit" className="bg-brand-accent text-white rounded-lg px-4 py-2">
+          <button type="submit" className="bg-brand-crust text-white rounded-lg px-4 py-2">
             Add
           </button>
         </form>

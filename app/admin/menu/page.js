@@ -78,7 +78,7 @@ function MenuPageInner() {
           <h1 className="font-display text-2xl text-brand-crust">Menu items</h1>
           <Link
             href="/admin/menu/new"
-            className="bg-brand-accent text-white rounded-lg px-4 py-2 text-sm font-medium"
+            className="bg-brand-crust text-white rounded-lg px-4 py-2 text-sm font-medium"
           >
             + Add item
           </Link>
@@ -141,7 +141,7 @@ function ItemList({ items, onToggleHidden, onDelete, onMove }) {
               {item.message_eligible ? " · message-eligible" : ""}
             </p>
           </div>
-          <Link href={`/admin/menu/${item.id}`} className="text-sm text-brand-accent">Edit</Link>
+          <Link href={`/admin/menu/${item.id}`} className="text-sm text-brand-crust">Edit</Link>
           <button onClick={() => onToggleHidden(item)} className="text-sm text-brand-crust/60">
             {item.is_hidden ? "Unhide" : "Hide"}
           </button>

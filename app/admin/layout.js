@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Admin — [Bakery Name]",
+  title: "Admin — JiaPan Bakery",
 };
 
 export default function AdminLayout({ children }) {

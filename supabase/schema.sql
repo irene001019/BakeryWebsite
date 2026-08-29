@@ -1,5 +1,5 @@
 -- ============================================================
--- [Bakery Name] Website — Database Schema (Phase 0)
+-- JiaPan Bakery Website — Database Schema (Phase 0)
 -- ============================================================
 -- Run this in the Supabase SQL Editor (or via `supabase db push`)
 -- once you've created a new Supabase project.

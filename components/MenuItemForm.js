@@ -306,7 +306,7 @@ export default function MenuItemForm({ itemId }) {
             <button type="button" onClick={() => removeVariant(i)} className="text-red-500 text-sm">✕</button>
           </div>
         ))}
-        <button type="button" onClick={addVariant} className="text-sm text-brand-accent">
+        <button type="button" onClick={addVariant} className="text-sm text-brand-crust">
           + Add size
         </button>
       </fieldset>
@@ -333,7 +333,7 @@ export default function MenuItemForm({ itemId }) {
             <button type="button" onClick={() => removeAddon(i)} className="text-red-500 text-sm">✕</button>
           </div>
         ))}
-        <button type="button" onClick={addAddon} className="text-sm text-brand-accent">
+        <button type="button" onClick={addAddon} className="text-sm text-brand-crust">
           + Add add-on
         </button>
       </fieldset>
@@ -342,7 +342,7 @@ export default function MenuItemForm({ itemId }) {
         <button
           type="submit"
           disabled={saving}
-          className="bg-brand-accent text-white rounded-lg px-5 py-2 font-medium disabled:opacity-50"
+          className="bg-brand-crust text-white rounded-lg px-5 py-2 font-medium disabled:opacity-50"
         >
           {saving ? "Saving…" : "Save"}
         </button>

@@ -59,7 +59,7 @@ export default function AdminLoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-brand-accent text-white rounded-lg py-2 font-medium disabled:opacity-50"
+          className="w-full bg-brand-crust text-white rounded-lg py-2 font-medium disabled:opacity-50"
         >
           {loading ? "Signing in…" : "Sign in"}
         </button>
