@@ -7,6 +7,7 @@ import { CartProvider } from "@/lib/cartContext";
 import MenuItemCard from "@/components/MenuItemCard";
 import CartPanel from "@/components/CartPanel";
 import StatusBanner from "@/components/StatusBanner";
+import FulfillmentSection from "@/components/FulfillmentSection";
 
 function MenuPageInner() {
   const [categories, setCategories] = useState([]);
@@ -48,7 +49,7 @@ function MenuPageInner() {
           alt="JiaPan Bakery — Japanese Cheesecake, Basque Cheesecake, Buns"
           width={1316}
           height={924}
-          className="w-56 sm:w-64 mx-auto h-auto"
+          className="w-72 sm:w-96 mx-auto h-auto"
           priority
         />
       </header>
@@ -89,6 +90,8 @@ function MenuPageInner() {
         </div>
         <CartPanel />
       </div>
+
+      <FulfillmentSection />
     </main>
   );
 }
