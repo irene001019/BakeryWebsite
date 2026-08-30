@@ -9,6 +9,32 @@ the complete requirements.
 Tailwind CSS, deployed on Vercel. Chosen to stay on free tiers — see
 "Recommended Approach" in the engineering system prompt.
 
+## Phase 3 status: cutoff & rolling-weekend logic
+
+This repo currently contains everything from Phases 0–2, plus:
+- **Real logo on the menu page** (`public/logo.jpg`, extracted from
+  `bakeryicon.pdf`), replacing the earlier text-recreated wordmark
+- **`lib/cutoff.js`** — the one shared function that answers "which
+  weekend can a customer order for right now, and when does that
+  close." This does real timezone-aware math (anchored to
+  `America/Winnipeg`), not naive `Date` arithmetic — a server usually
+  runs in UTC, so treating "8:00 PM" as the server's own local time
+  would be off by 5-6 hours. Verified against 6 test cases (including
+  the exact cutoff boundary and a winter DST check) before being wired
+  into the app — see the commit for the full test transcript
+- **`/api/cutoff-status`** — a server route that computes the current
+  status using the *server's* clock (per the project spec — never
+  trust a customer's device clock), reading the cutoff day/time from
+  the `settings` table so it stays correct if the owner changes it
+  later in Admin Settings (Phase 8)
+- **Status banner on `/menu`** — shows which weekend is currently
+  orderable and a live countdown to the cutoff, corrected for any
+  drift between the visitor's device clock and the server's clock
+
+This same `getOrderableWeekend()` function will also drive order
+submission validation (Phase 5) and the custom-message lead-time
+setting (Phase 8) — it only ever lives in this one file.
+
 ## Phase 2 status: public menu/order page (core)
 
 This repo currently contains everything from Phase 0 and 1, plus:
