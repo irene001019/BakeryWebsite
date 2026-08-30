@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { CartProvider } from "@/lib/cartContext";
 import MenuItemCard from "@/components/MenuItemCard";
 import CartPanel from "@/components/CartPanel";
-import BotanicalDivider from "@/components/BotanicalDivider";
+import StatusBanner from "@/components/StatusBanner";
 
 function MenuPageInner() {
   const [categories, setCategories] = useState([]);
@@ -41,17 +42,18 @@ function MenuPageInner() {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-10 md:py-16">
-      <header className="text-center mb-12">
-        <BotanicalDivider className="w-40 h-8 mx-auto text-brand-latte mb-4" />
-        <p className="font-script text-5xl text-brand-ink leading-none">JiaPan</p>
-        <p className="font-display text-sm tracking-[0.35em] uppercase text-brand-ink/70 mt-2">
-          Bakery
-        </p>
-        <p className="text-xs tracking-[0.2em] uppercase text-brand-ink/40 mt-3">
-          Japanese Cheesecake · Basque Cheesecake · Buns
-        </p>
-        <BotanicalDivider className="w-40 h-8 mx-auto text-brand-latte mt-4 rotate-180" />
+      <header className="text-center mb-8">
+        <Image
+          src="/logo.jpg"
+          alt="JiaPan Bakery — Japanese Cheesecake, Basque Cheesecake, Buns"
+          width={1316}
+          height={924}
+          className="w-56 sm:w-64 mx-auto h-auto"
+          priority
+        />
       </header>
+
+      <StatusBanner />
 
       {error && <p className="text-red-600 text-sm text-center mb-6">{error}</p>}
       {loading && <p className="text-center text-brand-ink/50">Loading this weekend&apos;s menu…</p>}
