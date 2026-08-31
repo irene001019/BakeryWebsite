@@ -21,7 +21,7 @@ export default function AdminLoginPage() {
       setError("That email or password isn't right. Try again.");
       return;
     }
-    router.replace("/admin/menu");
+    router.replace("/admin/orders");
   }
 
   return (

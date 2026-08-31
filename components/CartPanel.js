@@ -98,9 +98,6 @@ export default function CartPanel() {
           Choose pickup or delivery below to see your full total.
         </p>
       )}
-      <p className="text-[11px] text-brand-ink/40 mt-2">
-        Checkout is coming in the next build phase.
-      </p>
     </aside>
   );
 }

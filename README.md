@@ -9,6 +9,42 @@ the complete requirements.
 Tailwind CSS, deployed on Vercel. Chosen to stay on free tiers — see
 "Recommended Approach" in the engineering system prompt.
 
+## Phase 5 status: order submission + admin orders dashboard
+
+This repo currently contains everything from Phases 0–4, plus:
+- **Order submission** on `/menu` — contact info, delivery address
+  (only shown/required for Delivery), notes, and the cancellation
+  policy acknowledgment. Submitting writes a real `orders` row plus
+  one `order_items` row per cart line to the database, then shows an
+  on-screen confirmation and clears the cart
+- **Cutoff re-checked at submit time** — right before writing, it
+  fetches a fresh server-timestamped status (not whatever was true
+  when the page first loaded) and blocks submission with a clear
+  message if the cutoff has since passed, per the spec's "wired into
+  status banner + submission validation" requirement
+- **`/admin/orders`** (now the default admin landing page, per spec) —
+  list of orders, filterable by status and sortable by date,
+  expandable rows showing items/message/contact/notes, and manual
+  status updates (received → confirmed → ready → fulfilled/cancelled)
+
+**A deliberate design note:** customers have no read access to the
+`orders` table (by design — nobody should be able to browse other
+people's orders). That meant the usual `.insert().select()` pattern to
+read back the new row wouldn't work: in Postgres, RLS applies the same
+SELECT-policy filtering to a `RETURNING` clause as to a real SELECT, so
+it would've silently come back empty. Instead, the order's ID is
+generated client-side up front and reused for the order_items insert —
+no read-back needed at all.
+
+**Not yet built:** email notifications (order confirmed, new-order
+alert to the owner) — that's Phase 7. Right now confirmation is
+on-screen only.
+
+One-time setup (after the earlier phase SQL files): run
+`supabase/phase5_admin_orders_setup.sql` — without it, the admin
+Orders page will load but show nothing, since there's currently no
+policy letting the owner read orders at all.
+
 ## Phase 4 status: fulfillment (pickup/delivery + zone selection)
 
 This repo currently contains everything from Phases 0–3, plus:
