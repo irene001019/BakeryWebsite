@@ -4,16 +4,13 @@ import { useEffect, useState } from "react";
 
 function formatCountdown(ms) {
   if (ms <= 0) return "closing…";
-  const totalSeconds = Math.floor(ms / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
+  const totalHours = Math.floor(ms / 3_600_000);
+  const days = Math.floor(totalHours / 24);
+  const hours = totalHours % 24;
+  if (days === 0 && hours === 0) return "closing soon";
   const parts = [];
   if (days) parts.push(`${days}d`);
-  if (days || hours) parts.push(`${hours}h`);
-  if (days || hours || minutes) parts.push(`${minutes}m`);
-  parts.push(`${seconds}s`);
+  parts.push(`${hours}h`);
   return parts.join(" ");
 }
 
@@ -60,7 +57,7 @@ export default function StatusBanner() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => setNow(Date.now()), 1000);
+    const interval = setInterval(() => setNow(Date.now()), 60_000);
     return () => clearInterval(interval);
   }, []);
 

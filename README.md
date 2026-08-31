@@ -9,6 +9,34 @@ the complete requirements.
 Tailwind CSS, deployed on Vercel. Chosen to stay on free tiers — see
 "Recommended Approach" in the engineering system prompt.
 
+## Phase 4 status: fulfillment (pickup/delivery + zone selection)
+
+This repo currently contains everything from Phases 0–3, plus:
+- **Pickup/Delivery toggle** on `/menu`, right below the cart —
+  choosing Pickup shows the owner's location/time window; choosing
+  Delivery reveals zone selection
+- **Illustrated delivery zone selector** — an abstract "distance
+  ring" diagram (not a real geocoded map, per the spec — the bakery's
+  actual address stays private) paired with a plain clickable list for
+  reliable interaction on any device
+- **Live total** — the cart now shows subtotal, delivery fee (or
+  "Pickup — Free"), and a running grand total
+- **`/admin/delivery`** — a minimal admin page to set the pickup
+  location/time window and manage delivery zones (add, reorder,
+  activate/deactivate, delete). This ships now rather than waiting for
+  the full Admin Settings page (Phase 8) since Phase 4 isn't testable
+  without a way to enter at least one zone
+
+**Not yet built:** real address collection/validation (self-select
+zones only, per spec — no geocoding in V1) and order submission —
+that's Phase 5. The "My address might be outside these zones" note
+is a static informational message, not a working lookup.
+
+One-time setup (after `phase1_admin_setup.sql`): run
+`supabase/phase4_fulfillment_setup.sql`, then add at least one
+delivery zone and your pickup info from `/admin/delivery` before
+testing the delivery flow on `/menu`.
+
 ## Phase 3 status: cutoff & rolling-weekend logic
 
 This repo currently contains everything from Phases 0–2, plus:

@@ -3,7 +3,16 @@
 import { useCart } from "@/lib/cartContext";
 
 export default function CartPanel() {
-  const { lines, removeLine, updateQuantity, subtotalCents } = useCart();
+  const {
+    lines,
+    removeLine,
+    updateQuantity,
+    subtotalCents,
+    fulfillmentType,
+    deliveryZone,
+    deliveryFeeCents,
+    totalCents,
+  } = useCart();
 
   return (
     <aside className="bg-brand-paper rounded-2xl shadow-sm p-5 md:sticky md:top-6 h-fit">
@@ -58,14 +67,39 @@ export default function CartPanel() {
           ))}
         </ul>
       )}
-      <div className="flex justify-between items-center mt-4 pt-3 border-t border-brand-latte/30">
-        <span className="font-display text-lg text-brand-ink">Subtotal</span>
-        <span className="font-display text-lg text-brand-ink">
-          ${(subtotalCents / 100).toFixed(2)}
-        </span>
+      <div className="mt-4 pt-3 border-t border-brand-latte/30 space-y-1">
+        <div className="flex justify-between items-center text-sm text-brand-ink/60">
+          <span>Subtotal</span>
+          <span>${(subtotalCents / 100).toFixed(2)}</span>
+        </div>
+        {fulfillmentType === "pickup" && (
+          <div className="flex justify-between items-center text-sm text-brand-ink/60">
+            <span>Pickup</span>
+            <span>Free</span>
+          </div>
+        )}
+        {fulfillmentType === "delivery" && (
+          <div className="flex justify-between items-center text-sm text-brand-ink/60">
+            <span>Delivery{deliveryZone ? ` — ${deliveryZone.name}` : ""}</span>
+            <span>
+              {deliveryZone ? `$${(deliveryFeeCents / 100).toFixed(2)}` : "Select a zone"}
+            </span>
+          </div>
+        )}
+        <div className="flex justify-between items-center pt-1">
+          <span className="font-display text-lg text-brand-ink">Total</span>
+          <span className="font-display text-lg text-brand-ink">
+            ${(totalCents / 100).toFixed(2)}
+          </span>
+        </div>
       </div>
+      {!fulfillmentType && (
+        <p className="text-[11px] text-brand-ink/40 mt-2">
+          Choose pickup or delivery below to see your full total.
+        </p>
+      )}
       <p className="text-[11px] text-brand-ink/40 mt-2">
-        Pickup/delivery and checkout are coming in the next build phase.
+        Checkout is coming in the next build phase.
       </p>
     </aside>
   );

@@ -15,6 +15,7 @@ export default function AdminNav({ active }) {
   const links = [
     { href: "/admin/menu", label: "Menu" },
     { href: "/admin/categories", label: "Categories" },
+    { href: "/admin/delivery", label: "Delivery" },
   ];
 
   return (
