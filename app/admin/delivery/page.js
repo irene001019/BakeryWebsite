@@ -190,7 +190,8 @@ function DeliveryPageInner() {
               <input
                 type="number"
                 step="0.1"
-                min="0"
+                min="0.1"
+                required
                 value={newZone.maxKm}
                 onChange={(e) => setNewZone((z) => ({ ...z, maxKm: e.target.value }))}
                 className="w-full border border-brand-crust/20 rounded-lg px-2 py-1.5 text-sm"
