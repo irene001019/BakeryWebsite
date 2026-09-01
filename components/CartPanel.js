@@ -11,6 +11,7 @@ export default function CartPanel() {
     fulfillmentType,
     deliveryZone,
     deliveryFeeCents,
+    deliveryDiscountCents,
     totalCents,
   } = useCart();
 
@@ -84,6 +85,12 @@ export default function CartPanel() {
             <span>
               {deliveryZone ? `$${(deliveryFeeCents / 100).toFixed(2)}` : "Select a zone"}
             </span>
+          </div>
+        )}
+        {fulfillmentType === "delivery" && deliveryZone && deliveryDiscountCents > 0 && (
+          <div className="flex justify-between items-center text-xs text-brand-crust">
+            <span>Order discount applied</span>
+            <span>−${(deliveryDiscountCents / 100).toFixed(2)}</span>
           </div>
         )}
         <div className="flex justify-between items-center pt-1">

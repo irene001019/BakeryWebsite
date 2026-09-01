@@ -9,6 +9,18 @@ the complete requirements.
 Tailwind CSS, deployed on Vercel. Chosen to stay on free tiers — see
 "Recommended Approach" in the engineering system prompt.
 
+## Delivery discount (added after Phase 5)
+
+Orders over $50 get $5 off delivery; orders over $70 get $8 off
+instead (not stacked — whichever tier applies). Fee never drops below
+$0 regardless of discount size, and the discount shown to the customer
+is capped at the fee itself (so a $5 fee never claims "$8.00 off").
+Lives in `lib/cartContext.js` (`computeDeliveryFeeCents`) — the one
+place delivery pricing is calculated, so the admin dashboard, the
+cart, and the actual database write can never disagree about the
+price. Verified against 8 boundary cases (exact thresholds, discount
+exceeding the fee, a $0 zone) before being wired in.
+
 ## Phase 5 status: order submission + admin orders dashboard
 
 This repo currently contains everything from Phases 0–4, plus:
