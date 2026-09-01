@@ -11,6 +11,17 @@ function formatDate(isoStr) {
   return new Date(isoStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
+function formatWeekendDate(dateStr) {
+  // dateStr is "YYYY-MM-DD" from Postgres — parse as UTC so it doesn't
+  // shift a day depending on the admin's local timezone.
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 function OrdersPageInner() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -120,7 +131,7 @@ function OrdersPageInner() {
                   </p>
                   <p className="text-xs text-brand-crust/50">
                     {formatDate(order.created_at)} · {order.fulfillment_type} · weekend of{" "}
-                    {order.weekend_date}
+                    {formatWeekendDate(order.weekend_date)}
                   </p>
                 </div>
                 <span
