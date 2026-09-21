@@ -11,6 +11,7 @@ export default function CartPanel() {
     fulfillmentType,
     deliveryZone,
     deliveryFeeCents,
+    deliveryDiscountCents,
     totalCents,
   } = useCart();
 
@@ -86,6 +87,12 @@ export default function CartPanel() {
             </span>
           </div>
         )}
+        {fulfillmentType === "delivery" && deliveryZone && deliveryDiscountCents > 0 && (
+          <div className="flex justify-between items-center text-xs text-brand-crust">
+            <span>Order discount applied</span>
+            <span>−${(deliveryDiscountCents / 100).toFixed(2)}</span>
+          </div>
+        )}
         <div className="flex justify-between items-center pt-1">
           <span className="font-display text-lg text-brand-ink">Total</span>
           <span className="font-display text-lg text-brand-ink">
@@ -98,9 +105,6 @@ export default function CartPanel() {
           Choose pickup or delivery below to see your full total.
         </p>
       )}
-      <p className="text-[11px] text-brand-ink/40 mt-2">
-        Checkout is coming in the next build phase.
-      </p>
     </aside>
   );
 }

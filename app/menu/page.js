@@ -8,6 +8,7 @@ import MenuItemCard from "@/components/MenuItemCard";
 import CartPanel from "@/components/CartPanel";
 import StatusBanner from "@/components/StatusBanner";
 import FulfillmentSection from "@/components/FulfillmentSection";
+import OrderReviewSection from "@/components/OrderReviewSection";
 
 function MenuPageInner() {
   const [categories, setCategories] = useState([]);
@@ -92,6 +93,7 @@ function MenuPageInner() {
       </div>
 
       <FulfillmentSection />
+      <OrderReviewSection />
     </main>
   );
 }
